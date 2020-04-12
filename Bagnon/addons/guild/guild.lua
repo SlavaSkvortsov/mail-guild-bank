@@ -1,5 +1,5 @@
 --[[
-	main.lua
+	addon_override.lua
 		Starts the guild bank frame on demand
 --]]
 

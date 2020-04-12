@@ -13,6 +13,7 @@ function Frames:OnEnable()
 	self.registry = {
 		{id = 'inventory', name = INVENTORY_TOOLTIP},
 		{id = 'bank', name = BANK},
+		{id = 'mail_guild_bank', name = 'Банк гильдии'},
 		{id = 'vault', name = VOID_STORAGE, addon = self:NewLoader('VoidStorage', 'VoidStorage_LoadUI')},
 		{id = 'guild', name = GUILD_BANK, addon = self:NewLoader('GuildBank', 'GuildBankFrame_LoadUI')},
 	}

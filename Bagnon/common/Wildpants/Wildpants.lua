@@ -89,7 +89,17 @@ local ProfileDefaults = {
 		borderColor = {0, 1, 0, 1},
 		point = 'CENTER',
 		columns = 7,
-	}, FrameDefaults)
+	}, FrameDefaults),
+
+	mail_guild_bank = SetDefaults({
+		reversedTabs = true,
+		borderColor = {1, 1, 1, 1},
+		point = 'BOTTOMLEFT',
+		x = 50, y = 100,
+		columns = 8,
+		width = 384,
+		height = 200,
+	}, FrameDefaults),
 }
 
 
