@@ -1,5 +1,5 @@
 --[[
-	addon_override.lua
+	main.lua
 		Constant specifics for the addon
 --]]
 
