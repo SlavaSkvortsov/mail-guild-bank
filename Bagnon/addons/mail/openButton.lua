@@ -43,16 +43,11 @@ end
 --[[ Events ]]--
 
 function OpenButton:OnClick()
-    Addon.Frames:Show('mail_guild_bank')
+	Addon.Frames:Toggle('mail_guild_bank')
 end
 
 
 --[[ Update ]]--
-
-function OpenButton:RegisterEvents()
-	self:Update()
-end
-
 
 -- TODO Perform it on a mailbox openning. Close the frame with the mailbox closing
 local button = Addon.OpenButton:New(InboxFrame)

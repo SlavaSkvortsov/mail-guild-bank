@@ -1,8 +1,8 @@
 ## Interface: 11303
-## Title: Bagon Mail Guild Bank
+## Title: Bagon Mail Guild Bank - Banker
 ## Author: Jaliborc (João Cardoso)
 ## Notes: Guild bank by Adepts of Cataclysm (Rhok'delar)
 ## RequiredDeps: Bagnon
-## SavedVariables: MailGuildBankData
+## SavedVariables: MailGuildBankData, BankerLog
 
-..\Bagnon\addons\mail\mail.xml
+..\Bagnon\addons\banker\banker.xml

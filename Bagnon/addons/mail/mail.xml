@@ -1,11 +1,15 @@
 <Ui>
-	<Script file="bank_points_frame.lua"/>
-	<Script file="addon_override.lua"/>
+	<Script file="..\..\common\utils.lua"/>
+	<Script file="utils.lua"/>
 	<Script file="constants.lua"/>
-	<Script file="vault.lua"/>
+	<Script file="addon_override.lua"/>
+	<Script file="storage.lua"/>
+	<Script file="bank_points_frame.lua"/>
 
+	<Script file="buyButton.lua"/>
 	<Script file="item.lua"/>
 	<Script file="itemGroup.lua"/>
 	<Script file="frame.lua"/>
 	<Script file="openButton.lua"/>
+	<Script file="depositButton.lua"/>
 </Ui>

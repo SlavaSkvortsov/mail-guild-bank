@@ -1,0 +1,14 @@
+<Ui>
+	<Script file="..\..\common\utils.lua"/>
+	<Script file="utils.lua"/>
+
+	<Script file="mail.lua"/>
+	<Script file="purchase.lua"/>
+	<Script file="deposit.lua"/>
+	<Script file="removeMail.lua"/>
+	<Script file="sendBackMail.lua"/>
+
+	<Script file="warehouseButton.lua"/>
+
+	<Script file="main.lua"/>
+</Ui>

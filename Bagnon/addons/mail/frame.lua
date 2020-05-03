@@ -7,9 +7,6 @@ local MODULE =  ...
 local ADDON, Addon = MODULE:match('[^_]+'), _G[MODULE:match('[^_]+')]
 local Frame = Addon.Frame:NewClass('Mail_guild_bankFrame')
 
-local L = LibStub('AceLocale-3.0'):GetLocale(ADDON)
-local Sushi = LibStub('Sushi-3.1')
-
 Frame.Title = 'Гильдбанк'
 Frame.OpenSound = SOUNDKIT.UI_ETHEREAL_WINDOW_OPEN
 Frame.CloseSound = SOUNDKIT.UI_ETHEREAL_WINDOW_CLOSE
@@ -24,15 +21,22 @@ Frame.Bags = {Addon.constants.bank_bag}
 
 function Frame:New(id)
 	local f = self:Super(Frame):New(id)
-	f.purchase = self.ItemGroup:New(f, {Addon.constants.purchase_bag}, 'Покупка')
-
+	f.purchase = self.ItemGroup(f, {Addon.constants.purchase_bag}, true)
 	f.purchase:SetPoint('TOPLEFT', f.itemGroup, 'BOTTOMLEFT', 0, -5)
 	return f
 end
 
 function Frame:OnHide()
 	self:Super(Frame):OnHide()
-    -- TODO Reset bank condition
+	Addon.purchase_items = {}
+end
+
+
+function Frame:RegisterSignals()
+	self:RegisterEvent('MAIL_CLOSED', 'Hide')
+	self:RegisterSignal('UPDATE_ALL', 'Update')
+	self:RegisterFrameSignal('ITEM_FRAME_RESIZED', 'Layout')
+	self:Update()
 end
 
 
@@ -59,7 +63,13 @@ function Frame:Layout()
 	width = max(w, width)
 	height = height + h
 
+	--place purchase bag
 	local w, h = self:PlacePurchaseGroup()
+	width = max(w, width)
+	height = height + h
+
+	--place buy button
+	local w, h = self:PlaceBuyButton()
 	width = max(w, width)
 	height = height + h
 
@@ -83,9 +93,36 @@ end
 function Frame:PlacePurchaseGroup()
 	local title_height = self.purchase.Title:GetHeight();
 	self.purchase:SetPoint('TOPLEFT', self.itemGroup, 'BOTTOMLEFT', 0, -4 - title_height)
-	return self.purchase:GetWidth() - 2, self.itemGroup:GetHeight()
+	return self.purchase:GetWidth() - 2, self.purchase:GetHeight()
 end
 
+
+function Frame:PlaceBuyButton()
+	if self.buyButton == nil then
+		self.buyButton = Addon.BuyButton:New(self)
+		self.buyButton:Show()
+	end
+	self.buyButton:SetPoint('TOPLEFT', self.purchase, 'BOTTOMLEFT', 0, -4)
+	return self.buyButton:GetWidth(), self.buyButton:GetHeight()
+end
+
+
+function Frame:GetItemInfo(bag, slot)
+	local data = {}
+    if bag == Addon.constants.purchase_bag then
+        data = Addon.purchase_items[slot]
+	elseif bag == Addon.constants.bank_bag then
+		data = {id = MailGuildBankData.person[Addon.default_bank][slot]}
+	end
+
+	if data == nil or data.id == nil then
+		return {}
+	end
+
+    local restored_data = Addon:RestoreItemData(data)
+	restored_data.count = data.count or 1
+	return restored_data
+end
 
 
 --[[ Properties ]]--
@@ -97,16 +134,4 @@ end
 
 function Frame:IsCached()
 	return false
-end
-
-function Frame:GetItemInfo(bag, slot)
-    if Addon.IsBaseBag(bag) then
-        return self:Super(Frame):GetItemInfo(bag, slot)
-    end
-
-	local mocked_item = Addon.constants.items_mock[slot]
-	if mocked_item == nil then
-		mocked_item = {}
-	end
-    return Addon:RestoreItemData(mocked_item);
 end

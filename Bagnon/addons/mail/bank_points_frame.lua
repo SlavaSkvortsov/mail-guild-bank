@@ -38,23 +38,5 @@ end
 
 
 function BankPointsFrame:Update()
-    self.text:SetText(self:GetMoney() .. ' BP')
-end
-
---[[ API ]]--
-
-function BankPointsFrame:GetMoney()
-    local player_name = UnitName('player')
-    for i = 1, GetNumGuildMembers() do
-        local name, _, _, _, _, _, _, officerNote = GetGuildRosterInfo(i);
-        if player_name == name then
-            -- TODO could be done better, just copypasted it
-            local data = {};
-            for i in officerNote:gmatch("([^,%s]+)") do
-                data[#data + 1] = i
-            end
-	        return data[3] or 0
-        end
-    end
-    return 0
+    self.text:SetText('Всего ' .. Addon:GetBP() .. ' BP')
 end
