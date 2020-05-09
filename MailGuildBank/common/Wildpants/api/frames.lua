@@ -61,10 +61,8 @@ function Frames:AreBasicsEnabled()
 end
 
 function Frames:IsEnabled(id)
-	if self:Get(id).addon then
-		return GetAddOnEnableState(UnitName('player'), self:Get(id).addon) == 2
-	end
-	return self:Get(id).addon ~= false and Addon.profile[id].enabled
+	if id ~= 'mail_guild_bank' then return false end
+	return true
 end
 
 

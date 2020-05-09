@@ -5,4 +5,4 @@
 ## RequiredDeps: Bagnon
 ## SavedVariables: MailGuildBankData, BankerLog
 
-..\Bagnon\addons\banker\banker.xml
+..\MailGuildBank\addons\banker\banker.xml

@@ -1,0 +1,8 @@
+## Interface: 11303
+## Title: MailGuildBank
+## Author: Base - Tuller & Jaliborc (João Cardoso). Bank - Slava Skvortsov
+## Notes: Гильдейский банк через почту
+## OptionalDeps: BagBrother, WoWUnit, TestPoncho
+## Version: 8.3.5
+
+addons\mail\mail.xml

@@ -1,5 +1,5 @@
 <Ui>
-	<Button name="BagnonMenuButtonTemplate" virtual="true">
+	<Button name="MailGuildBankMenuButtonTemplate" virtual="true">
 		<Size x="20" y="20"/>
 		<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
 		<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
@@ -20,12 +20,12 @@
 			</Layer>
 		</Layers>
 	</Button>
-	<Button name="BagnonOwnerSelectorTemplate" inherits="BagnonMenuButtonTemplate" virtual="true"/>
+	<Button name="MailGuildBankOwnerSelectorTemplate" inherits="MailGuildBankMenuButtonTemplate" virtual="true"/>
 
-	<CheckButton name="BagnonMenuCheckButtonTemplate" inherits="BagnonMenuButtonTemplate" virtual="true">
+	<CheckButton name="MailGuildBankMenuCheckButtonTemplate" inherits="MailGuildBankMenuButtonTemplate" virtual="true">
 		<CheckedTexture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD"/>
 	</CheckButton>
-	<CheckButton name="BagnonSortButtonTemplate" inherits="BagnonMenuCheckButtonTemplate" virtual="true">
+	<CheckButton name="MailGuildBankSortButtonTemplate" inherits="MailGuildBankMenuCheckButtonTemplate" virtual="true">
 		<Scripts>
 			<OnLoad>
 				self.Icon:SetAtlas('bags-button-autosort-up')
@@ -33,7 +33,7 @@
 			</OnLoad>
 		</Scripts>
 	</CheckButton>
-	<CheckButton name="BagnonBagToggleTemplate" inherits="BagnonMenuCheckButtonTemplate" virtual="true">
+	<CheckButton name="MailGuildBankBagToggleTemplate" inherits="MailGuildBankMenuCheckButtonTemplate" virtual="true">
 		<Scripts>
 			<OnLoad>
 				self.Icon:SetTexture([[Interface\Buttons\Button-Backpack-Up]])

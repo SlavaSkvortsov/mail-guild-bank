@@ -1,4 +1,6 @@
 <Ui>
+	<Include file="..\main\main.xml"/>
+
 	<Script file="..\..\common\utils.lua"/>
 	<Script file="utils.lua"/>
 	<Script file="constants.lua"/>
